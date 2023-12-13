@@ -1,27 +1,46 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js + TypeScript App"/>
+  <UpBar/>
+  <saidBar/>
+  <section class="friends">
+    <h2>My friends</h2>
+    <ul>
+       <li></li>
+    </ul>
+  </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import HelloWorld from './components/HelloWorld.vue';
+import UpBar from './components/UpBar.vue';
+import saidBar from './components/SaidBar.vue';
+
 
 export default defineComponent({
   name: 'App',
   components: {
-    HelloWorld
+    UpBar,
+    saidBar
+  },
+  data(){
+    return {
+      friends:[
+        {
+          id:1,
+          name:'yoyo',
+          phone:'0775235765',
+          email:'yoyo@mn.com'
+        },
+        {
+          id:2,
+          name:'ali',
+          phone:'0775235765',
+          email:'ali@mn.com'
+        },
+      ]
+    }
   }
-});
+})
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
 </style>
