@@ -2,11 +2,12 @@
   <UpBar/>
   <div class="friends">
     <h2>My friends</h2>
-    <ul>
+    <ul  >
        <FriendContact
        name="yoyo"
        phone="09343432"
        email="wewew@gmail.com"
+       is-favorate="1"
        >
        </FriendContact>
     </ul>
