@@ -1,10 +1,9 @@
 <template>
   <UpBar/>
-  <saidBar/>
-  <section class="friends">
+  <div class="friends">
     <h2>My friends</h2>
     <ul>
-       <li></li>
+       <FriendContact/>
     </ul>
   </div>
 </template>
@@ -12,14 +11,14 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import UpBar from './components/UpBar.vue';
-import saidBar from './components/SaidBar.vue';
-
+import FriendContact from './components/FriendContact.vue';
 
 export default defineComponent({
   name: 'App',
   components: {
     UpBar,
-    saidBar
+    FriendContact,
+    
   },
   data(){
     return {
@@ -43,4 +42,8 @@ export default defineComponent({
 </script>
 
 <style>
+.friends{
+  align-content: center;
+  text-align: center;
+}
 </style>
