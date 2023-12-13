@@ -32,7 +32,7 @@ data(){
 methods:{
     addFriend(){
       this.$emit('newFriend',this.friend);
-    //   this.friend={} as friend;  
+       this.friend={} as friend;  
     }
 }
 });
