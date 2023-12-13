@@ -1,5 +1,6 @@
 <template>
   <UpBar />
+  <AddFriend @newFriend="(friend)=>addNewFriend(friend)"/>
   <ConditionalRindering type="0" />
   <div class="friends">
     <h2>My friends</h2>
@@ -19,6 +20,7 @@ import { defineComponent } from 'vue';
 import UpBar from './components/UpBar.vue';
 import FriendContact from './components/FriendContact.vue';
 import ConditionalRindering from './components/ConditionalRindering.vue';
+import AddFriend from './components/AddFriend.vue'
 import friend from './interface/friend';
 
 export default defineComponent({
@@ -26,7 +28,8 @@ export default defineComponent({
   components: {
     UpBar,
     FriendContact,
-    ConditionalRindering
+    ConditionalRindering,
+    AddFriend
   },
   data() {
     return {
@@ -60,6 +63,9 @@ export default defineComponent({
       if (indexToRemove !== -1) {
         this.friends.splice(indexToRemove, 1);
       }
+    },
+    addNewFriend(newFriend: friend){
+      this.friends.push(newFriend);
     }
 
   }
