@@ -1,56 +1,61 @@
 <template>
-    <li>
-        <h2 :class="{favoriate : friendIsFavoraite === '1'}">{{name}} <strong>{{ friendIsFavoraite === '1'? '(favoraite)':''}}</strong></h2>
-        <button @click="toggleFavorite">{{(friendIsFavoraite === '1' ? 'un' : 'is')}} Favoraite</button>
-        <button @click="toggleDetails">{{detailAreVisible ? 'hide' : 'show'}} Details</button>
-        <ul v-if="detailAreVisible">
-            <li><strong>phone:</strong>{{phone }}</li>
-            <li><strong>email:</strong>{{emailFriend}}</li>
-        </ul>
-    </li>
+  <li>
+    <h2 :class="{ favoriate: friendIsFavoraite }">{{ friend.name }} <strong>{{ friendIsFavoraite ?
+      '(favoraite)' : '' }}</strong></h2>
+    <button @click="RemoveFriend">X</button>
+    <button @click="toggleFavorite">{{ (friendIsFavoraite ? 'un' : 'is') }} Favoraite</button>
+    <button @click="toggleDetails">{{ detailAreVisible ? 'hide' : 'show' }} Details</button>
+    <ul v-if="detailAreVisible">
+      <li><strong>phone:</strong>{{ friend.phone }}</li>
+      <li><strong>email:</strong>{{ emailFriend }}</li>
+    </ul>
+  </li>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue'
 
+import Friend from '@/interface/friend'
+
 export default defineComponent({
-  props:[
-    'name'as string,
-    'phone',
-    'email',
-    'isFavorate'
-  ],
-  data(){
-    return{
-        detailAreVisible:false,
-        friendIsFavoraite:this.isFavorate,
-        emailFriend:this.email,
-        // friend:{
-        //     name:'yoyo',
-        //     phone:'07693043232',
-        //     email:'wdwdqdwq@mn.com'
-        // }  
+  props:
+  {
+    friend:{type:  Friend,required:true}
+  }
+  ,
+  data() {
+    return {
+      detailAreVisible: false,
+      friendIsFavoraite: this.friend.isFav,
+      emailFriend: this.friend.email,
+      // friend:{
+      //     name:'yoyo',
+      //     phone:'07693043232',
+      //     email:'wdwdqdwq@mn.com'
+      // }  
     }
   },
   mounted() {
-this.emailFriend=this.emailFriend+'@gmail.com';
+    this.emailFriend = this.emailFriend + '@gmail.com';
   },
-  methods:{
-toggleDetails(){this.detailAreVisible=!this.detailAreVisible;},
-toggleFavorite(){
-  if (this.friendIsFavoraite === '1')
-    this.friendIsFavoraite='0';
-   else
-     this.friendIsFavoraite='1';
+  methods: {
+    toggleDetails() { this.detailAreVisible = !this.detailAreVisible; },
+    toggleFavorite() {
+      if (this.friendIsFavoraite === true)
+        this.friendIsFavoraite = false;
+      else
+        this.friendIsFavoraite = true;
 
-     this.$emit('selectedFavoriate',this.name);
-}
-}
+      this.$emit('selectedFavoriate', this.friend.name);
+    },
+    RemoveFriend(){
+    this.$emit('selectedFriend',this.friend.id);
+  }
+  },
   
+
 })
 </script>
-<style scoped>
-.favoriate{
+<style scoped>.favoriate {
   color: red;
-}
-</style>
+}</style>
