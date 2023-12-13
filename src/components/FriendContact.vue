@@ -5,7 +5,7 @@
         <button @click="toggleDetails">{{detailAreVisible ? 'hide' : 'show'}} Details</button>
         <ul v-if="detailAreVisible">
             <li><strong>phone:</strong>{{phone }}</li>
-            <li><strong>email:</strong>{{email }}</li>
+            <li><strong>email:</strong>{{emailFriend}}</li>
         </ul>
     </li>
 </template>
@@ -15,7 +15,7 @@ import { defineComponent } from 'vue'
 
 export default defineComponent({
   props:[
-    'name',
+    'name'as string,
     'phone',
     'email',
     'isFavorate'
@@ -24,12 +24,16 @@ export default defineComponent({
     return{
         detailAreVisible:false,
         friendIsFavoraite:this.isFavorate,
+        emailFriend:this.email,
         // friend:{
         //     name:'yoyo',
         //     phone:'07693043232',
         //     email:'wdwdqdwq@mn.com'
         // }  
     }
+  },
+  mounted() {
+this.emailFriend=this.emailFriend+'@gmail.com';
   },
   methods:{
 toggleDetails(){this.detailAreVisible=!this.detailAreVisible;},
@@ -38,6 +42,8 @@ toggleFavorite(){
     this.friendIsFavoraite='0';
    else
      this.friendIsFavoraite='1';
+
+     this.$emit('selectedFavoriate',this.name);
 }
 }
   

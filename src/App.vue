@@ -3,12 +3,13 @@
   <ConditionalRindering type="0"/>
   <div class="friends">
     <h2>My friends</h2>
-    <ul v-for=" friend in friends" :key="friend.id">
+    <ul v-for="(friend,index) in friends" :key="index">
        <FriendContact
-       name="friend.name"
-       phone="friend.phone"
-       email="friend.email"
-       is-favorate="1"
+       :name="friend.name"
+       :phone="friend.phone"
+       :email="friend.email"
+       :is-favorate="1"
+       @selectedFavoriate="(name)=>messAlert(name)"
        >
        </FriendContact>
     </ul>
@@ -35,16 +36,22 @@ export default defineComponent({
           id:1,
           name:'yoyo',
           phone:'0775235765',
-          email:'yoyo@mn.com'
+          email:'yoyo'
         },
         {
           id:2,
           name:'ali',
           phone:'0775235765',
-          email:'ali@mn.com'
+          email:'ali'
         },
       ]
     }
+  },
+  methods:{
+    messAlert(name : string){
+      alert(`this is fav ${name}`);
+    }
+
   }
 })
 </script>
