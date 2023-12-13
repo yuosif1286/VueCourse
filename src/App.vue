@@ -3,11 +3,11 @@
   <ConditionalRindering type="0"/>
   <div class="friends">
     <h2>My friends</h2>
-    <ul  >
+    <ul v-for=" friend in friends" :key="friend.id">
        <FriendContact
-       name="yoyo"
-       phone="09343432"
-       email="wewew@gmail.com"
+       name="friend.name"
+       phone="friend.phone"
+       email="friend.email"
        is-favorate="1"
        >
        </FriendContact>
@@ -17,7 +17,6 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-
 import UpBar from './components/UpBar.vue';
 import FriendContact from './components/FriendContact.vue';
 import ConditionalRindering from './components/ConditionalRindering.vue';

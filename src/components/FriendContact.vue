@@ -4,13 +4,13 @@
         <button @click="toggleFavorite">{{(friendIsFavoraite === '1' ? 'un' : 'is')}} Favoraite</button>
         <button @click="toggleDetails">{{detailAreVisible ? 'hide' : 'show'}} Details</button>
         <ul v-if="detailAreVisible">
-            <li :style="{ display: ['-webkit-box', '-ms-flexbox', 'flex'] }" ><strong>phone:</strong>{{phone }}</li>
+            <li><strong>phone:</strong>{{phone }}</li>
             <li><strong>email:</strong>{{email }}</li>
         </ul>
     </li>
 </template>
 
-<script>
+<script lang="ts">
 import { defineComponent } from 'vue'
 
 export default defineComponent({
