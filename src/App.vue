@@ -1,5 +1,6 @@
 <template>
   <UpBar/>
+  <ConditionalRindering type="0"/>
   <div class="friends">
     <h2>My friends</h2>
     <ul  >
@@ -16,15 +17,17 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
+
 import UpBar from './components/UpBar.vue';
 import FriendContact from './components/FriendContact.vue';
+import ConditionalRindering from './components/ConditionalRindering.vue';
 
 export default defineComponent({
   name: 'App',
   components: {
     UpBar,
     FriendContact,
-    
+    ConditionalRindering
   },
   data(){
     return {
