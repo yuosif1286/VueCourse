@@ -3,7 +3,12 @@
   <div class="friends">
     <h2>My friends</h2>
     <ul>
-       <FriendContact/>
+       <FriendContact
+       name="yoyo"
+       phone="09343432"
+       email="wewew@gmail.com"
+       >
+       </FriendContact>
     </ul>
   </div>
 </template>
