@@ -2,7 +2,7 @@
 <form class="form">
 <div>
     <label for="name">name</label>
-    <input type="text" v-model="friend.name">
+    <input type="text" maxlength="10" minlength="2" required v-model="friend.name">
 </div>
 <div>
     <label for="name">email</label>

@@ -20,19 +20,42 @@ import Friend from '@/interface/friend'
 export default defineComponent({
   props:
   {
-    friend:{type:  Friend,required:true}
-  }
-  ,
+
+    id: Number,
+    name: {
+      type: String,
+      requierd: true
+    },
+    phone: {
+      type: String,
+      requierd: true
+    }
+    ,
+    email: {
+      type: String,
+      requierd: false
+    },
+    isFav: {
+      type: Boolean,
+      required: false,
+      default: false
+      ,
+      validator: function (value) {
+        return value === true || value === false
+      }
+    }
+  },
   data() {
     return {
       detailAreVisible: false,
-      friendIsFavoraite: this.friend.isFav,
-      emailFriend: this.friend.email,
-      // friend:{
-      //     name:'yoyo',
-      //     phone:'07693043232',
-      //     email:'wdwdqdwq@mn.com'
-      // }  
+      friendIsFavoraite: this.isFav,
+      emailFriend: this.email,
+      friend: {
+        name: this.name,
+        phone: this.phone,
+        email: this.email,
+        isFav: this.isFav
+      } as Friend
     }
   },
   mounted() {
@@ -48,14 +71,16 @@ export default defineComponent({
 
       this.$emit('selectedFavoriate', this.friend.name);
     },
-    RemoveFriend(){
-    this.$emit('selectedFriend',this.friend.id);
-  }
+    RemoveFriend() {
+      this.$emit('selectedFriend', this.id);
+    }
   },
-  
+
 
 })
 </script>
-<style scoped>.favoriate {
+<style scoped>
+.favoriate {
   color: red;
-}</style>
+}
+</style>

@@ -1,13 +1,18 @@
 <template>
   <UpBar />
-  <AddFriend @newFriend="(friend)=>addNewFriend(friend)"/>
+  <AddFriend @newFriend="(friend) => addNewFriend(friend)" />
   <ConditionalRindering type="0" />
   <div class="friends">
     <h2>My friends</h2>
     <div v-if="friends.length > 0">
       <ul v-for="(friend, index) in friends" :key="index">
-        <FriendContact :friend="friend" @selectedFavoriate="(name) => messAlert(name)"
-          @selectedFriend="(id) => removeFried(id)">
+        <FriendContact
+         :name="friend.name"
+         :is-fav="friend.isFav" 
+         :id="friend.id" 
+         :email="friend.email"
+          :phone="friend.email" 
+          @selectedFavoriate="(name) => messAlert(name)" @selectedFriend="(id) => removeFried(id)">
         </FriendContact>
       </ul>
     </div>
@@ -64,7 +69,7 @@ export default defineComponent({
         this.friends.splice(indexToRemove, 1);
       }
     },
-    addNewFriend(newFriend: friend){
+    addNewFriend(newFriend: friend) {
       this.friends.push(newFriend);
     }
 
