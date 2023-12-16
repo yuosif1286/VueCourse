@@ -73,12 +73,7 @@ export default defineComponent({
     },
     removeFried(id: number) {
       // Find the index of the friend with the specified 'id'
-      let indexToRemove = this.friends.findIndex(friend => friend.id === id);
-
-      // If the friend with 'id' is found, remove it
-      if (indexToRemove !== -1) {
-        this.friends.splice(indexToRemove, 1);
-      }
+     this.friends=this.friends.filter(f=>f.id !== id);
     },
     addNewFriend(newFriend: friend) {
       this.friends.push(newFriend);

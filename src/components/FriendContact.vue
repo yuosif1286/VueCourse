@@ -18,6 +18,7 @@ import { defineComponent } from 'vue';
 
 
 export default defineComponent({
+ emits:['selectedFavoriate','selectedFriend'],
   props: {
     id: {
       type: Number,
