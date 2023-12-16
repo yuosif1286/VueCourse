@@ -13,37 +13,33 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
+import Friend from '@/interface/friend';
+import { defineComponent } from 'vue';
 
-import Friend from '@/interface/friend'
 
 export default defineComponent({
-  props:
-  {
-
-    id: Number,
+  props: {
+    id: {
+      type: Number,
+      required: true,
+    },
     name: {
       type: String,
-      requierd: true
+      required: true,
     },
     phone: {
       type: String,
-      requierd: true
-    }
-    ,
+      required: true,
+    },
     email: {
       type: String,
-      requierd: false
+      default: '',
     },
     isFav: {
       type: Boolean,
-      required: false,
-      default: false
-      ,
-      validator: function (value) {
-        return value === true || value === false
-      }
-    }
+      default: false,
+      validator: (value: boolean) => value === true || value === false,
+    },
   },
   data() {
     return {
@@ -51,6 +47,7 @@ export default defineComponent({
       friendIsFavoraite: this.isFav,
       emailFriend: this.email,
       friend: {
+        id: this.id,
         name: this.name,
         phone: this.phone,
         email: this.email,
@@ -74,10 +71,9 @@ export default defineComponent({
     RemoveFriend() {
       this.$emit('selectedFriend', this.id);
     }
+    },
   },
-
-
-})
+);
 </script>
 <style scoped>
 .favoriate {

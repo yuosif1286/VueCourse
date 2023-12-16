@@ -1,10 +1,8 @@
-export default  class friend{
+export default  interface Friend{
    
-    constructor(
-      public id:number,
-      public name:string,
-      public phone:string,
-      public email:string,
-      public isFav:boolean
-    ) { }
+  id: number;
+  name: string;
+  phone: string;
+  email?: string;
+  isFav: boolean;
 }
