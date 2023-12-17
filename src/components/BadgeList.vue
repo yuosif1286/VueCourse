@@ -1,14 +1,18 @@
 <template>
   <base-card>
-    <h2>Available Badges</h2>
-    <ul>
+    <template v-slot:header>
+      <h2>Available Badges</h2>
+    </template>
+    <template v-slot:default>
+      <ul>
       <li>
         <base-badge type="admin" caption="ADMIN"></base-badge>
       </li>
       <li>
         <base-badge type="author" caption="AUTHOR"></base-badge>
       </li>
-    </ul>
+     </ul>
+    </template>
   </base-card>
 </template>
 
@@ -29,3 +33,5 @@ li {
   margin-right: 1rem;
 }
 </style>
+<script setup lang="ts">
+</script>
