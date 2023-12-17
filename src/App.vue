@@ -1,121 +1,119 @@
 <template>
-  <main>
-    <header>
-      <UpBar />
-    </header>
-    <aside>
-      <SaidBar />
-    </aside>
-    <section>
-
-      <AddFriend @newFriend="(friend) => addNewFriend(friend)" />
-      <ConditionalRindering type="0" />
-      <div class="friends">
-        <h2>My friends</h2>
-        <div v-if="friends.length > 0">
-          <ul v-for="(friend, index) in friends" :key="index">
-            <FriendContact :name="friend.name" :is-fav="friend.isFav" :id="friend.id" :email="friend.email"
-              :phone="friend.phone" @selectedFavoriate="(name) => messAlert(name)"
-              @selectedFriend="(id) => removeFried(id)">
-            </FriendContact>
-          </ul>
-        </div>
-
-      </div>
-    </section>
-    <footer>
-      ok
-    </footer>
-  </main>
+  <div>
+    <active-element
+      :topic-title="activeTopic && activeTopic.title"
+      :text="activeTopic && activeTopic.fullText"
+    ></active-element>
+    <knowledge-base  @select-topic="activateTopic"></knowledge-base>
+  </div>
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue';
-import UpBar from './components/UpBar.vue';
-import FriendContact from './components/FriendContact.vue';
-import ConditionalRindering from './components/ConditionalRindering.vue';
-import AddFriend from './components/AddFriend.vue'
-import friend from './interface/friend';
-import SaidBar from './components/SaidBar.vue';
-
-export default defineComponent({
-  name: 'App',
-  components: {
-    UpBar,
-    FriendContact,
-    ConditionalRindering,
-    AddFriend,
-    SaidBar
-  },
+<script>
+export default {
   data() {
-    return {
-      friends: [
+    return {  topics: [
         {
-          id: 1,
-          name: 'yoyo',
-          phone: '0775235765',
-          email: 'yoyo',
-          isFav: true
+          id: 'basics',
+          title: 'The Basics',
+          description: 'Core Vue basics you have to know',
+          fullText:
+            'Vue is a great framework and it has a couple of key concepts: Data binding, events, components and reactivity - that should tell you something!',
         },
         {
-          id: 2,
-          name: 'ali',
-          phone: '0775235765',
-          email: 'ali',
-          isFav: false
+          id: 'components',
+          title: 'Components',
+          description:
+            'Components are a core concept for building Vue UIs and apps',
+          fullText:
+            'With components, you can split logic (and markup) into separate building blocks and then combine those building blocks (and re-use them) to build powerful user interfaces.',
         },
-      ] as friend[]
-    }
+      ],
+      activeTopic: null,
+    };
+  },
+  provide(){
+    return{topics:this.topics}
+  },
+  mounted(){
+    setTimeout(() => {   
+    this.topics.push({
+      id: 'new ',
+          title: 'test',
+          description:
+            'Components are a core concept for building Vue UIs and apps',
+          fullText:
+            'With components, you can split logic (and markup) into separate building blocks and then combine those building blocks (and re-use them) to build powerful user interfaces.',
+
+    });
+    }, 3000);
   },
   methods: {
-    messAlert(name: string) {
-      alert(`this is fav ${name}`);
+    activateTopic(topicId) {
+      this.activeTopic = this.topics.find((topic) => topic.id === topicId);
     },
-    removeFried(id: number) {
-      // Find the index of the friend with the specified 'id'
-      let indexToRemove = this.friends.findIndex(friend => friend.id === id);
-
-      // If the friend with 'id' is found, remove it
-      if (indexToRemove !== -1) {
-        this.friends.splice(indexToRemove, 1);
-      }
-    },
-    addNewFriend(newFriend: friend) {
-      this.friends.push(newFriend);
-    }
-
-  }
-})
+  },
+};
 </script>
 
 <style>
-.friends {
-  align-content: center;
+* {
+  box-sizing: border-box;
+}
+html {
+  font-family: sans-serif;
+}
+body {
+  margin: 0;
+}
+section {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+  margin: 2rem auto;
+  max-width: 40rem;
+  padding: 1rem;
+  border-radius: 12px;
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+}
+
+li {
+  border-radius: 12px;
+  border: 1px solid #ccc;
+  padding: 1rem;
+  width: 15rem;
+  margin: 0 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+h2 {
+  margin: 0.75rem 0;
   text-align: center;
 }
-header{
-  grid-area: header;
+
+button {
+  font: inherit;
+  border: 1px solid #c70053;
+  background-color: #9fb1b4;
+  color: rgb(136, 3, 3);
+  padding: 0.75rem 2rem;
+  border-radius: 30px;
+  cursor: pointer;
 }
-aside{
-  grid-area: aside;
+
+button:hover,
+button:active {
+  background-color: #e24d8b;
+  border-color: #e24d8b;
 }
-section{
-  grid-area: section;
-}
-footer{
-  grid-area: footer;
-   /* Add your preferred background color */
-  color: #380808; /* Add your preferred text color */
-  text-align: center;
-  padding: 10px;
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-}
-main{
-  display: grid;
-  grid-template-areas: 'header header header'
-                       'aside section section'
-                       'aside footer footer';
+body{
+  background-color: rgb(80, 73, 75);
+  color: rgb(197, 176, 176);
 }
 </style>
