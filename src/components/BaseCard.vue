@@ -1,15 +1,21 @@
 
 <template>
 <div>
-  <header>
-    <slot name="header"></slot>
+  <header v-if="$slots.header">
+    <slot name="header">
+<!--      <h2>Default show </h2>-->
+    </slot>
   </header>
 <slot></slot>
 </div>
 </template>
 
-<script setup lang="ts">
-
+<script>
+export default{
+  mounted() {
+    console.log(this.$slots.header)
+  }
+}
 </script>
 
 <style scoped>
