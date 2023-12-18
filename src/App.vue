@@ -1,26 +1,25 @@
 <template>
+  <the-header></the-header>
   <div>
-    <the-header />
-    <badge-list></badge-list>
-    <user-info
-      :full-name="activeUser.name"
-      :info-text="activeUser.description"
-      :role="activeUser.role"
-    ></user-info>
+    <button @click="setSelectedComponent('active-goals')">active-goals</button>
+    <button @click="setSelectedComponent('manage-goals')">manage-goals</button>
+<!--    <active-goals v-if="selectedComponent === 'active-goals' "></active-goals>
+    <manage-goals  v-if="selectedComponent === 'manage-goals'"></manage-goals>-->
+  <component :is="selectedComponent"></component>
   </div>
 </template>
 
 <script>
 import TheHeader from './components/TheHeader.vue';
-import UserInfo from './components/UserInfo.vue';
+
 export default {
   // local component
   components:{
-    TheHeader,
-    'user-info':UserInfo
+TheHeader
   },
   data() {
     return {
+      selectedComponent:'active-goals',
       activeUser: {
         name: 'Maximilian Schwarzmüller',
         description: 'Site owner and admin',
@@ -28,6 +27,12 @@ export default {
       },
     };
   },
+  methods:{
+    setSelectedComponent(cmp)
+    {
+      this.selectedComponent=cmp;
+    }
+  }
 };
 </script>
 
