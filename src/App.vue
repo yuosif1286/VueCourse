@@ -1,9 +1,14 @@
 <template>
-  <ul></ul>
+<stored-resources :resources="storedResources"></stored-resources>
 </template>
 
 <script>
+import StoredResources from "@/components/Learning-resources/StoredResources.vue";
+
 export default {
+  components:{
+    StoredResources,
+  },
   data(){
     return{
       storedResources:[
@@ -24,3 +29,13 @@ export default {
   }
 }
 </script>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari&display=swap');
+*{
+  box-sizing: border-box;
+}
+html{
+  font-family: 'Noto Sans Devanagari', sans-serif;
+}
+</style>
