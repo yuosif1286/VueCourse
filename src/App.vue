@@ -11,7 +11,13 @@ export default {
           id:'official-guides'
           ,title:'official Guide',
           description:'The official Vue.js documentation'
-          ,link:'https://www.linkedin.com/in/yuosif-raed-04a84621a/'
+          ,link:'https://vuejs.org/guide/introduction.html'
+        },
+        {
+          id:'google'
+          ,title:'Google',
+          description:'Learn to google...'
+          ,link:'https://www.google.com/'
         }
       ]
     }
