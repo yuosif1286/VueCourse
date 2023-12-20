@@ -1,49 +1,20 @@
 <template>
-  <the-header></the-header>
-  <div>
-    <button @click="setSelectedComponent('active-goals')">active-goals</button>
-    <button @click="setSelectedComponent('manage-goals')">manage-goals</button>
-<!--    <active-goals v-if="selectedComponent === 'active-goals' "></active-goals>
-    <manage-goals  v-if="selectedComponent === 'manage-goals'"></manage-goals>-->
-    <keep-alive>
-    <component :is="selectedComponent"></component>
-    </keep-alive>
-  </div>
+  <ul></ul>
 </template>
 
 <script>
-import TheHeader from './components/layout/TheHeader.vue';
-
 export default {
-  // local component
-  components:{
-TheHeader
-  },
-  data() {
-    return {
-      selectedComponent:'active-goals',
-      activeUser: {
-        name: 'Maximilian Schwarzmüller',
-        description: 'Site owner and admin',
-        role: 'admin',
-      },
-    };
-  },
-  methods:{
-    setSelectedComponent(cmp)
-    {
-      this.selectedComponent=cmp;
+  data(){
+    return{
+      storedResources:[
+        {
+          id:'official-guides'
+          ,title:'official Guide',
+          description:'The official Vue.js documentation'
+          ,link:'https://www.linkedin.com/in/yuosif-raed-04a84621a/'
+        }
+      ]
     }
   }
-};
+}
 </script>
-
-<style>
-html {
-  font-family: sans-serif;
-}
-
-body {
-  margin: 0;
-}
-</style>
