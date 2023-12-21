@@ -1,15 +1,15 @@
 <template>
   <li>
-    <div>
+    <base-card>
       <header>
         <h3>{{title}}</h3>
-        <button>Delete</button>
+        <base-button :class="'flat'"> <span class="text">Delete</span></base-button>
       </header>
-    </div>
-    <p>{{description}}</p>
+      <p>{{description}}</p>
     <nav>
       <a v-bind:href="link">View Resource</a>
     </nav>
+    </base-card>
   </li>
 </template>
 
@@ -17,8 +17,12 @@
 
 
 <script>
-export default {
 
+
+import BaseButton from "@/UI/BaseButton.vue";
+
+export default {
+  components: {BaseButton},
   props:['title','description','link'],
 }
 </script>
@@ -39,5 +43,8 @@ a{
   text-decoration: none;
   color: orangered;
   font-size: large;
+}
+a:hover{
+  color: #ff4500a3;
 }
 </style>

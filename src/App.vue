@@ -1,12 +1,15 @@
 <template>
-<stored-resources :resources="storedResources"></stored-resources>
+  <the-header title="RememberMe"></the-header>
+  <stored-resources :resources="storedResources"></stored-resources>
 </template>
 
 <script>
 import StoredResources from "@/components/Learning-resources/StoredResources.vue";
+import TheHeader from "@/Layouts/TheHeader.vue";
 
 export default {
   components:{
+    TheHeader,
     StoredResources,
   },
   data(){
@@ -37,5 +40,8 @@ export default {
 }
 html{
   font-family: 'Noto Sans Devanagari', sans-serif;
+}
+body{
+  margin: 0;
 }
 </style>
