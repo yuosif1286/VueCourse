@@ -11,17 +11,24 @@ export default {
 </script>
 
 <style scoped>
-.flat{
+button{
   background: inherit;
   border: none;
   font-size: large;
   color: darkmagenta;
+  padding: 5px;
+}
+.flat{
+  background: darkmagenta;
+  border: none;
+  font-size: large;
+  color: white;
+  padding: 5px;
 }
 .flat:hover,
-.flat:active{
-  font-size: x-large;
-  color: #8244a8;
-  transform-style: preserve-3d;
-  translate: 1px 1px;
+.flat:active,
+button{
+  color: #d31020;
+  background: #e160e1;
 }
 </style>
