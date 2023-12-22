@@ -3,7 +3,11 @@
     <base-card>
       <header>
         <h3>{{title}}</h3>
-        <base-button :class="'flat'"> <span class="text">Delete</span></base-button>
+        <base-button
+            :class="'flat'"
+             @click="deleteResource(id)">
+          <span class="text">Delete</span>
+        </base-button>
       </header>
       <p>{{description}}</p>
     <nav>
@@ -23,7 +27,8 @@ import BaseButton from "@/UI/BaseButton.vue";
 
 export default {
   components: {BaseButton},
-  props:['title','description','link'],
+  props:['id','title','description','link'],
+  inject:['deleteResource']
 }
 </script>
 

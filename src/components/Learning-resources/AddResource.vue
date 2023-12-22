@@ -19,6 +19,7 @@
     </div>
   </form>
 </base-card>
+  <teleport to="body">
   <base-dialog v-if="inputIsInvalid" title="Invalid Input" @close="ConfirmError">
     <template #default>
       <p>Unfortunately, at least one input value is invalid. </p>
@@ -28,6 +29,7 @@
       <base-button @click="ConfirmError">Okay</base-button>
     </template>
   </base-dialog>
+  </teleport>
 </template>
 
 <script>

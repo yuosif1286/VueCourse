@@ -5,6 +5,7 @@
     <learning-resource v-for="res in resources"  :description="res.description"
                        :title="res.title"
                        :link="res.link"
+                       :id="res.id"
                        :key="res.id"
     ></learning-resource>
   </ul>
