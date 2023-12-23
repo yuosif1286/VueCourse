@@ -1,29 +1,28 @@
 <template>
-  <the-header title="RememberMe"></the-header>
-  <TheResources></TheResources>
+  <the-form></the-form>
 </template>
 
 <script>
-import TheHeader from "@/Layouts/TheHeader.vue";
-import TheResources from "@/components/Learning-resources/TheResources.vue";
+import TheForm from './components/TheForm.vue';
 
 export default {
-  components:{
-    TheResources,
-    TheHeader,
-  },
+  components: {
+    TheForm
+  }  
 }
 </script>
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari&display=swap');
-*{
+* {
   box-sizing: border-box;
 }
-html{
-  font-family: 'Noto Sans Devanagari', sans-serif;
+
+html {
+  font-family: sans-serif;
 }
-body{
+
+body {
   margin: 0;
+  background-color: #292929;
 }
 </style>
