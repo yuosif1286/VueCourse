@@ -6,11 +6,11 @@
     </div>
     <div class="form-control">
       <label for="age">Your Age (Years)</label>
-      <input id="age" name="age" type="number" v-model="age" />
+      <input id="age" name="age" type="number" v-model.number="age" />
     </div>
     <div class="form-control">
       <label for="referrer">How did you hear about us?</label>
-      <select id="referrer" name="referrer">
+      <select id="referrer" name="referrer" v-model="referrer">
         <option value="google">Google</option>
         <option value="wom">Word of mouth</option>
         <option value="newspaper">Newspaper</option>
@@ -56,13 +56,15 @@ export default {
   data(){
     return{
       name:'',
-      age:13
+      age:13,
+      referrer: 'wom'
     }
   },
   methods:{
     submitForm(){
-      console.log('userName :'+ this.name + '\n and age :' + this.age);
+      console.log('userName :'+ this.name + '\n and age :' + (this.age+5));
       this.name='';
+      console.log(this.referrer)
     }
   }
 }
