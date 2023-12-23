@@ -1,8 +1,9 @@
 <template>
   <form @submit.prevent="submitForm">
-    <div class="form-control">
+    <div class="form-control" :class="{invalid: nameValidity ==='invalid'}">
       <label for="user-name">Your Name</label>
-      <input id="user-name" name="user-name" type="text" v-model="name" />
+      <input id="user-name" name="user-name" type="text" v-model.trim="name" @blur="validateInput"/>
+       <p v-if="nameValidity === 'invalid'">please, input valid name</p>
     </div>
     <div class="form-control">
       <label for="age">Your Age (Years)</label>
@@ -46,6 +47,10 @@
         <label for="how-other">Other</label>
       </div>
     </div>
+    <div class="form-control">
+      <input id="confirm-item" name="confirm-items" type="checkbox" value="tutorials" v-model="confirm"/>
+      <label for="confirm-item">Agree to terms of use?</label>
+    </div>
     <div>
       <button>Save Data</button>
     </div>
@@ -59,7 +64,9 @@ export default {
       age:13,
       referrer: 'wom',
       interested:[],
-      how:null
+      how:null,
+      confirm:null,
+      nameValidity:'bending'
     }
   },
   methods:{
@@ -69,6 +76,17 @@ export default {
       console.log(this.referrer);
       console.log(this.interested);
       console.log(this.how);
+      console.log(this.confirm)
+    },
+    validateInput(){
+      console.log('test');
+      if (this.name === '')
+      {
+        this.nameValidity='invalid';
+      }
+      else {
+        this.nameValidity='valid';
+      }
     }
   }
 }
@@ -134,5 +152,13 @@ button:hover,
 button:active {
   border-color: #002350;
   background-color: #002350;
+}
+
+.form-control.invalid input{
+  border-color: red;
+}
+
+.form-control.invalid label{
+  color: red;
 }
 </style>
