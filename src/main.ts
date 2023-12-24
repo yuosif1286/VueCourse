@@ -1,12 +1,14 @@
 import { createApp } from 'vue';
 
-import BaseCard from './components/UI/BaseCard.vue';
-import BaseButton from './components/UI/BaseButton.vue';
 import App from './App.vue';
 
-const app = createApp(App);
+import {createRouter,createWebHistory} from 'vue-router'
 
-app.component('base-card', BaseCard);
-app.component('base-button', BaseButton);
+const app = createApp(App)
+
+ const router =createRouter({
+     history: createWebHistory(),
+     routes:[]
+ });
 
 app.mount('#app');
