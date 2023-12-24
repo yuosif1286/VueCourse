@@ -24,7 +24,9 @@ export default {
   components: {
     SurveyResult,
   },
-
+mounted() {
+    this.loadExperiences();
+},
   data(){
     return{
       results:[]
