@@ -6,15 +6,18 @@
         <base-button @click="loadExperiences">Load Submitted Experiences</base-button>
       </div>
       <p v-if="isLoading">Loading...</p>
-      <ul v-else-if="!isLoading && results && results.length > 0">
+      <p v-else-if="!isLoading && (!results || results.length === 0) && !error">No stored experiences found. start adding some survey result</p>
+      <p v-else-if="!isLoading && error">
+        {{error}}
+      </p>
+      <ul v-else>
         <survey-result
-          v-for="result in results"
-          :key="result.id"
-          :name="result.name"
-          :rating="result.rating"
+            v-for="result in results"
+            :key="result.id"
+            :name="result.name"
+            :rating="result.rating"
         ></survey-result>
       </ul>
-      <p v-else-if="!isLoading && (!results || results.length === 0)">No stored experiences found. start adding some survey result</p>
     </base-card>
   </section>
 </template>
@@ -32,7 +35,8 @@ mounted() {
   data(){
     return{
       results:[],
-      isLoading:false
+      isLoading:false,
+      error:null
     }
   },methods:{
     loadExperiences(){
@@ -44,6 +48,7 @@ mounted() {
         }
       }).then( (data)=>{
         this.isLoading=false;
+        this.error=null;
         const results=[];
         for (const id in data)
         {
@@ -53,6 +58,10 @@ mounted() {
           });
         }
         this.results=results;
+      }).catch((error)=>{
+        console.log(error);
+        this.isLoading=false;
+       this.error='Failed to fetch data pleas try again later. '
       });
     }
   }
