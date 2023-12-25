@@ -12,7 +12,8 @@ const app = createApp(App)
      routes:[
          {path:'/teams',component:teamsList},
          {path:'/users',component:usersList},
-     ]
+     ],
+     linkActiveClass:'active'
  });
 
 app.use(router);
