@@ -16,7 +16,7 @@ export default {
    },
   computed:{
     teamMembersLink(){
-      return 'teams/'+ this.teamId;
+      return '/teams/'+ this.teamId;
     }
   }
 };
