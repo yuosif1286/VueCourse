@@ -13,7 +13,7 @@ const app = createApp(App)
      routes:[
          {path:'/teams',component:teamsList},
          {path:'/users',component:usersList},
-         {path:'/teams/:teamId',component:teamMembers}
+         {path:'/teams/:teamId',component:teamMembers,props:true}
      ],
      linkActiveClass:'active'
  });
