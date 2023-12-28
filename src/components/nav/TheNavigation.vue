@@ -3,10 +3,10 @@
     <nav>
       <ul>
         <li>
-         <RouterLink to="teams">Teams</RouterLink>
+         <RouterLink to="/teams">Teams</RouterLink>
         </li>
         <li>
-          <router-link to="users">Users</router-link>
+          <router-link to="/users">Users</router-link>
         </li>
       </ul>
     </nav>
