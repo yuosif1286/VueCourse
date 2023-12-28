@@ -13,9 +13,9 @@ const app = createApp(App)
      history: createWebHistory(),
      routes:[
          // {path:'/',redirect:'/teams'},
-         {path:'/teams',component:teamsList,alias:'/',
+         {name:'teams' ,path:'/teams',component:teamsList,alias:'/',
          children:[
-             {path:':teamId',component:teamMembers,props:true},// team/t1
+             {name:'team-members', path:':teamId',component:teamMembers,props:true},// team/t1
          ]},
          {path:'/users',component:usersList},
          {path:'/:notfound(.*)',component:NotFound}

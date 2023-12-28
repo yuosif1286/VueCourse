@@ -16,7 +16,11 @@ export default {
    },
   computed:{
     teamMembersLink(){
-      return '/teams/'+ this.teamId;
+     // return '/teams/'+ this.teamId;
+   // return{path:'/teams/',params:{teamId:this.teamId}};
+     return {name:'team-members',params:{teamId:this.teamId}};
+     //can use this in code to nav
+    // this.$route.push({name:'team-members',params:{teamId:this.teamId}})
     }
   }
 };
