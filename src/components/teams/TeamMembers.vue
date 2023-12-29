@@ -37,22 +37,25 @@ export default {
       this.loadTeamMembers(this.teamId);
     }
   },
-  methods:{
-    loadTeamMembers(teamId){
+  methods: {
+    loadTeamMembers(teamId) {
       //this.$route.path.
-      const selectedTeam=this.teams.find(x=>x.id === teamId);
-      const members=selectedTeam.members;
-      const selectedMembers=[];
-      for (const member of members)
-      {
-        const selectedUser= this.users.find(x=>x.id===member);
+      const selectedTeam = this.teams.find(x => x.id === teamId);
+      const members = selectedTeam.members;
+      const selectedMembers = [];
+      for (const member of members) {
+        const selectedUser = this.users.find(x => x.id === member);
         selectedMembers.push(selectedUser);
       }
-      this.members=selectedMembers;
-      this.teamName= selectedTeam.name;
-    }
-  }
+      if (this.$route.query.sort==='asc')
+      this.members = selectedMembers;
+      else {
+        this.members = selectedMembers;
+      }
+      this.teamName = selectedTeam.name;
+    },
 
+  }
 };
 </script>
 
