@@ -59,6 +59,9 @@ router.beforeEach(function (to,from,next) {
    // next(false);
     next();
 });
-
+router.afterEach(function (to,from){
+    console.log('Global AfterEach');
+    console.log(to,from);
+});
 app.use(router);
 app.mount('#app');
