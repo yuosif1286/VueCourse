@@ -30,7 +30,15 @@ const app = createApp(App)
              }},
          {path:'/:notfound(.*)',component:NotFound}
      ],
-     linkActiveClass:'active'
+     linkActiveClass:'active',
+     scrollBehavior(to,from,savedPostion){
+         console.log(to,from,savedPostion);
+         if (savedPostion)
+         {
+             return savedPostion;
+         }
+         return {left:0,top:0};
+     }
  });
 
 app.use(router);
