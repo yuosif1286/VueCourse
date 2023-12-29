@@ -31,8 +31,8 @@ const app = createApp(App)
          {path:'/:notfound(.*)',component:NotFound}
      ],
      linkActiveClass:'active',
-     scrollBehavior(to,from,savedPostion){
-         console.log(to,from,savedPostion);
+     scrollBehavior(_,_2,savedPostion){
+      //   console.log(to,from,savedPostion);
          if (savedPostion)
          {
              return savedPostion;
@@ -40,6 +40,19 @@ const app = createApp(App)
          return {left:0,top:0};
      }
  });
+
+router.beforeEach(function (to,from,next) {
+    console.log('Global beforeEach');
+    console.log(to,from);
+  //  next('/users');
+  //   if(to.name === 'team-members')
+  //       next();
+  //   else
+  //   next({name:'team-members',params:{teamId:'t2'}});
+    //الغاء التنقل
+   // next(false);
+    next();
+});
 
 app.use(router);
 app.mount('#app');
