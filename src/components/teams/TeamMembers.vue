@@ -31,6 +31,12 @@ export default {
   created(){
    this.loadTeamMembers(this.teamId);
   },
+  beforeRouteUpdate(to,from,next){
+    console.log('teamMember cmp beforeRuoteUpdate');
+    console.log(to,from);
+   // this.loadTeamMembers(to.params.teamId);
+    next();
+  },
   watch:{
     //if the route is chang
     teamId(){

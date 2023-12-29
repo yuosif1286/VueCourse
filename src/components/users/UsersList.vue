@@ -18,6 +18,11 @@ export default {
       // navigation from code
       this.$router.push('/teams');
     }
+  },
+  beforeRouteEnter(to,from,next){
+    console.log('usersList cmp beforeRouteEnter');
+    console.log(to,from);
+    next();
   }
 };
 </script>

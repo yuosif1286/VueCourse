@@ -27,7 +27,13 @@ const app = createApp(App)
          {path:'/users',
              components:{
             default: usersList,footer:userFooter
-             }},
+             },
+         beforeEnter(to,from,next){
+             console.log('users beforEnter');
+             console.log(to,from);
+             next();
+         }
+         },
          {path:'/:notfound(.*)',component:NotFound}
      ],
      linkActiveClass:'active',
