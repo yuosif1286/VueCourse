@@ -19,7 +19,8 @@ const app = createApp(App)
              components: {
              default:teamsList,
                  footer:teamFooter
-             }
+             },
+             meta:{needsAuth:true}
              ,alias:'/',
          children:[
              {name:'team-members', path:':teamId',component:teamMembers,props:true},// team/t1
@@ -50,6 +51,13 @@ const app = createApp(App)
 router.beforeEach(function (to,from,next) {
     console.log('Global beforeEach');
     console.log(to,from);
+    if(to.meta.needsAuth)
+    {
+        console.log('Needs Auth');
+    }
+    else {
+        next();
+    }
   //  next('/users');
   //   if(to.name === 'team-members')
   //       next();
