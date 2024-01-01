@@ -7,11 +7,8 @@
 export default {
   computed:{
     counter(){
-      return this.$store.getters.finalCount;
+      return this.$store.getters.normalCount;
     }
   },
 };
 </script>
-<style scoped>
-
-</style>
