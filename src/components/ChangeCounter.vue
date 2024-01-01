@@ -1,7 +1,7 @@
 
 
 <template>
-<button @click="addOne"> add 1</button>
+<button @click="addOne"> add 2</button>
 </template>
 <script>
 export default {
