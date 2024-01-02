@@ -4,20 +4,26 @@ import App from './App.vue';
 import {createStore} from 'vuex';
 interface State {
     counter: number;
+    isLoggedIn:boolean;
 }
 
 const store=createStore({
-    state(){
-        return{
-            counter:0,
+    state: function () {
+        return {
+            counter: 0,
+            isLoggedIn : false
         };
     },
     mutations:{
-        increment(state : State){
+        increment(state: State){
             state.counter= 2 + state.counter;
         },
         increase(state,payload){
             state.counter+=payload.value;
+        },
+        setAuth(state ,payload)
+        {
+            state.isLoggedIn =payload.isAuth;
         }
     },
     actions:{
@@ -28,6 +34,12 @@ const store=createStore({
       },
         increase(context,payload){
             context.commit('increase',payload);
+        },
+        login(context){
+          context.commit('setAuth',{isAuth:true})
+        } ,
+        logout(context){
+          context.commit('setAuth',{isAuth:false})
         }
     },
     getters:{
@@ -43,6 +55,9 @@ const store=createStore({
                 return 100;
 
             return finalCount;
+        },
+        userIsAuth(state){
+            return state.isLoggedIn;
         }
     },
 });
