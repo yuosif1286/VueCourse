@@ -9,6 +9,7 @@ interface State{
     isLoggedIn:boolean;
 }
 const CounterModule =  {
+    namespace:true,
     actions: {
         increment(context: ActionContext<StateCounter, StateCounter>) {
             setTimeout(function () {
@@ -18,6 +19,9 @@ const CounterModule =  {
         increase(context: ActionContext<StateCounter, StateCounter>, payload: any) {
             context.commit('increase', payload);
         },
+        login(){
+            return true;
+        }
     },
     getters: {
         finalCount(state: StateCounter) {
@@ -33,9 +37,9 @@ const CounterModule =  {
 
             return finalCount;
         },
-        testAuth(state: StateCounter,getters:any):any{
-            return state.counter;
-        }
+        testAuth(state: StateCounter,getters:any,rootState:any,rootGetters:any):any{
+            return rootState.isLoggedIn;
+        },
     },
     mutations: {
         increment(state: StateCounter) {
@@ -54,6 +58,7 @@ const CounterModule =  {
 };
 const AuthModule=
     {
+        namespace: true,
     actions: {
         login(context:any) {
             context.commit('setAuth', {isAuth: true})
