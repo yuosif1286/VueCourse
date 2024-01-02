@@ -86,7 +86,7 @@ const AuthModule=
 const store =createStore({
    modules:{
        numbers:CounterModule,
-       Auth:AuthModule
+       auth:AuthModule
     },
 });
 
