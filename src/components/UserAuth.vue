@@ -3,6 +3,7 @@
 <template>
 <button @click="login" v-if="!isAuth">login</button>
 <button @click="logout" v-if="isAuth">logout</button>
+  <p>{{isUserAuth}}</p>
 </template>
 <script>
 import {mapActions} from "vuex";
@@ -19,6 +20,9 @@ export  default {
   computed:{
     isAuth(){
       return this.$store.getters.userIsAuth;
+    },
+    isUserAuth(){
+      return this.$store.getters.testAuth;
     }
   }
 };

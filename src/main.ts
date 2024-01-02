@@ -33,9 +33,13 @@ const CounterModule =  {
 
             return finalCount;
         },
+        testAuth(state: StateCounter,getters:any):any{
+            return state.counter;
+        }
     },
     mutations: {
         increment(state: StateCounter) {
+            console.log(state);
             state.counter = 2 + state.counter;
         },
         increase(state: StateCounter, payload: any) {
