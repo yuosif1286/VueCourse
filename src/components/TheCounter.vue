@@ -9,7 +9,7 @@ import {mapGetters} from "vuex";
 export default {
   computed:{
 /*    counter(){
-       return this.$store.getters.finalCount;
+       return this.$indexStore.getters.finalCount;
     },*/
     ...mapGetters(['finalCount'])
   },

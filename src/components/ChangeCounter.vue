@@ -10,7 +10,7 @@ import {mapActions} from "vuex";
 export default {
   methods:{
   /*  addOne(){
-      this.$store.dispatch('increment');
+      this.$indexStore.dispatch('increment');
     }*/
     // ...mapActions(['increment','increase'])
     ...mapActions({

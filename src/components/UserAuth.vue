@@ -11,9 +11,9 @@ import {mapActions} from "vuex";
 export  default {
   methods:{
 /*    login(){
-      this.$store.dispatch('login')
+      this.$indexStore.dispatch('login')
     }, logout(){
-      this.$store.dispatch('logout')
+      this.$indexStore.dispatch('logout')
     },*/
     ...mapActions(['login',"logout"])
   },
