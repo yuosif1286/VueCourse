@@ -1,0 +1,3 @@
+interface IStateLogin{
+    isLoggedIn:boolean;
+}
