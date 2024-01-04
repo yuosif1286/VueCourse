@@ -1,39 +1,28 @@
 <template>
-  <the-header></the-header>
-  <router-view></router-view>
+  <section class="container">
+    <h2>{{ userName }}</h2>
+  </section>
 </template>
 
 <script>
-import TheHeader from './components/nav/TheHeader.vue';
-
+import {ref} from "vue";
 export default {
-  components: {
-    TheHeader
-  },
-  data() {
-    return {
-      isLoggedIn: false,
-    };
-  },
-  provide() {
-    return {
-      isLoggedIn: this.isLoggedIn,
-      cart: this.cart,
-      addProductToCart: this.addProductToCart,
-      removeProductFromCart: this.removeProductFromCart,
-      login: this.login,
-      logout: this.logout,
-    };
-  },
-  methods: {
+ setup(){
+  const uName= ref('Maximilian');
+  setTimeout(function (){
+    uName.value='yoyo'
+  },2000)
 
-    login() {
-      this.isLoggedIn = true;
-    },
-    logout() {
-      this.isLoggedIn = false;
-    },
-  },
+  return{
+    userName:uName
+  };
+ }
+
+  /* data() {
+    return {
+      userName: 'Maximilian',
+    };
+  },*/
 };
 </script>
 
@@ -48,5 +37,14 @@ html {
 
 body {
   margin: 0;
+}
+
+.container {
+  margin: 3rem auto;
+  max-width: 30rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+  padding: 1rem;
+  text-align: center;
 }
 </style>
