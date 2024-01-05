@@ -7,17 +7,19 @@
 
 <script setup>
 //import {ref} from "vue";
-import {reactive} from "vue";
+import {ref,reactive,isRef,toRefs,isReactive} from "vue";
 
- // const uName= ref('Maximilian');
+  const uName= ref('Maximilian');
   const user= reactive({uName:'Maximilian',age:42});
   setTimeout(function (){
    // uName.value='yoyo'
     user.uName='yoyo';
     user.age=32;
   },2000);
+console.log(isReactive(user),isRef(uName));
 
-
+const newUser=toRefs(user);
+console.log(newUser);
 </script>
 
 <style>
