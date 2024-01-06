@@ -5,8 +5,11 @@
     <h2>{{oneParam}}</h2>
     <button @click="setNewAge">Change Age</button>
 
-    <input type="text" placeholder="write your first name" @input="setFirstName">
-    <input type="text" placeholder="write your last name" @input="setLastName">
+    <input type="text" placeholder="write your first name" v-model="firstName">
+    <input type="text" placeholder="write your last name" v-model="lasstName">
+
+<!--    <input type="text" placeholder="write your first name" @input="setFirstName">
+    <input type="text" placeholder="write your last name" @input="setLastName">-->
   </section>
 </template>
 
