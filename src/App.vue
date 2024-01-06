@@ -6,7 +6,10 @@
     <button @click="setNewAge">Change Age</button>
 
     <input type="text" placeholder="write your first name" v-model="firstName">
-    <input type="text" placeholder="write your last name" v-model="lastName">
+    <input type="text" placeholder="write your last name" ref="lastNameInput">
+
+    <button @click="setLastNameInput">Set last name input</button>
+    <!--    <input type="text" placeholder="write your last name" v-model="lastName">-->
 
 <!--    <input type="text" placeholder="write your first name" @input="setFirstName">
     <input type="text" placeholder="write your last name" @input="setLastName">-->
@@ -19,6 +22,7 @@ import {ref, reactive, computed, watch} from "vue";
 
    const firstName=ref('');
    const lastName=ref('');
+   const lastNameInput=ref(null);
 
    const uName=computed(function (){
      return firstName.value + ' ' +lastName.value;
@@ -48,6 +52,9 @@ import {ref, reactive, computed, watch} from "vue";
   }
   function setLastName(event){
     lastName.value=event.target.value;
+  }
+  function setLastNameInput(){
+    lastName.value=lastNameInput.value.value;
   }
 </script>
 
