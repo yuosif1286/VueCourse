@@ -28,6 +28,7 @@ import {ref,reactive,computed} from "vue";
     oneParam.value='yoyo';
   }
 
+//used
   function setFirstName(event){
     firstName.value=event.target.value;
   }
