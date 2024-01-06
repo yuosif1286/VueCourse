@@ -1,6 +1,6 @@
 <template>
   <section class="container">
-   <user-data :first-name="firstName" :last-name="lastName" :age="user.age"></user-data>
+   <user-data :first-name="firstName" :last-name="lastName" ></user-data>
     <h2>{{oneParam}}</h2>
     <button @click="setNewAge">Change Age</button>
 
@@ -17,7 +17,7 @@
 
 <script setup>
 //import {ref} from "vue";
-import {ref, reactive, computed, watch} from "vue";
+import {ref, reactive, computed, watch,provide} from "vue";
 import UserData from "@/components/UserData.vue";
 
    const firstName=ref('');
@@ -34,6 +34,8 @@ import UserData from "@/components/UserData.vue";
     user.age=20;
     oneParam.value='yoyo';
   }
+  //provide
+   provide('user',user);
 //watcher
 /*watch(user,function (newUser,OldUser){
   console.log('this New user Age:  '+newUser.age);
