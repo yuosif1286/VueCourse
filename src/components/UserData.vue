@@ -10,9 +10,11 @@ import {computed} from "vue";
 export default {
   props:['firstName','lastName','age'],
   setup(props){
-    const fullName= computed()
+    const fullName= computed(function (){
+      return props.firstName +' '+ props.lastName;
+    });
 
-    return{};
+    return{fullName};
   },
 };
 </script>

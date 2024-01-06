@@ -1,7 +1,6 @@
 <template>
   <section class="container">
-    <h2>{{ uName }}</h2>
-    <h2>{{ user.age }}</h2>
+   <user-data :first-name="firstName" :last-name="lastName" :age="user.age"></user-data>
     <h2>{{oneParam}}</h2>
     <button @click="setNewAge">Change Age</button>
 
@@ -19,6 +18,7 @@
 <script setup>
 //import {ref} from "vue";
 import {ref, reactive, computed, watch} from "vue";
+import UserData from "@/components/UserData.vue";
 
    const firstName=ref('');
    const lastName=ref('');
