@@ -20,20 +20,79 @@
 
 <script>
 import UserItem from './UserItem.vue';
+import {ref,computed,watch} from "vue";
 
 export default {
   components: {
     UserItem,
   },
   props: ['users'],
-  data() {
+  setup(props){
+   const enteredSearchTerm=ref('');
+   const activeSearchTerm=ref('');
+   const sorting =ref(null);
+
+ const availableUsers= computed(function (){
+   let users = [];
+   if (activeSearchTerm.value) {
+     users = props.users.filter((usr) =>
+         usr.fullName.includes(activeSearchTerm.value)
+     );
+   } else if (props.users) {
+     users = props.users;
+   }
+   return users;
+ });
+
+ const  displayedUsers= computed(function () {
+   if (!sorting.value) {
+     return availableUsers.value;
+   }
+   return availableUsers.value.slice().sort((u1, u2) => {
+     if (sorting.value === 'asc' && u1.fullName > u2.fullName) {
+       return 1;
+     } else if (sorting.value === 'asc') {
+       return -1;
+     } else if (sorting.value === 'desc' && u1.fullName > u2.fullName) {
+       return -1;
+     } else {
+       return 1;
+     }
+   });
+ });
+ const updateSearch =function  (val) {
+      enteredSearchTerm.value = val;
+    };
+ const sort=function  (mode) {
+      sorting.value = mode;
+    };
+
+watch(enteredSearchTerm,function (val){
+  setTimeout(() => {
+    if (val === enteredSearchTerm.value) {
+     activeSearchTerm.value = val;
+    }
+  }, 300);
+})
+
+    return{
+      enteredSearchTerm,
+      activeSearchTerm,
+      sorting,
+      availableUsers,
+      displayedUsers,
+      updateSearch,
+      sort
+    };
+  },
+  /*data() {
     return {
       enteredSearchTerm: '',
       activeSearchTerm: '',
       sorting: null,
     };
-  },
-  computed: {
+  },*/
+  /*computed: {
     availableUsers() {
       let users = [];
       if (this.activeSearchTerm) {
@@ -61,16 +120,16 @@ export default {
         }
       });
     },
-  },
-  methods: {
+  },*/
+  /*methods: {
     updateSearch(val) {
       this.enteredSearchTerm = val;
     },
     sort(mode) {
       this.sorting = mode;
     },
-  },
-  watch: {
+  },*/
+/*  watch: {
     enteredSearchTerm(val) {
       setTimeout(() => {
         if (val === this.enteredSearchTerm) {
@@ -78,7 +137,7 @@ export default {
         }
       }, 300);
     }
-  },
+  },*/
 };
 </script>
 
