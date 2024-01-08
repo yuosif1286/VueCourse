@@ -1,32 +1,17 @@
 <script lang="ts">
-import {computed} from "vue";
-import  { useCounterStore } from "@/store/counter"
+import {useCounterStore} from "@/store/counter"
+import CounterAction from "@/components/CounterAction.vue";
+import CounterType from "@/components/CounterType.vue";
+
 export default {
+  components: {CounterType, CounterAction},
 
   setup() {
 
-    const counter=useCounterStore
-
-
-    const increaseCount=function () {
-     counter;
-    }
-    const dencreaseCount=function () {
-     counter.value--;
-    }
-
-    const oddOrEven=computed(function () {
-      if (counter.value % 2===0)
-        return 'Even'
-      else
-        return 'odd'
-    })
-
+    const storeCounter=useCounterStore()
+   
     return {
-      counter,
-      increaseCount,
-      dencreaseCount,
-      oddOrEven
+     storeCounter
     }
   }
 }
@@ -35,16 +20,16 @@ export default {
 
 <template>
   <div class="content">
-    <p>{{ counter }}</p>
-    <div class="buttons">
-      <button @click="increaseCount">+</button>
-      <button @click="dencreaseCount">-</button>
-    </div>
+    <p>{{ storeCounter.count }}</p>
+    <counterAction />
     <hr/>
-    <div>
-      This number is :
-      <h2>{{oddOrEven}}</h2>
-    </div>
+    <CounterType />
+    <hr/>
+    <h3>Edit Counter :</h3>
+    <input
+    type="number"
+    v-model="storeCounter.count"
+    >
   </div>
 
 </template>
