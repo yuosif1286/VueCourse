@@ -1,46 +1,12 @@
 <template>
-  <main>
-    <user-list :users="activeUsers" @list-projects="selectUser"></user-list>
-    <projects-list :user="selectedUser"></projects-list>
-  </main>
+<counter-test></counter-test>
 </template>
 
 <script>
-import USER_DATA from './dummy-data.js';
-
-import UserList from './components/users/UserList.vue';
-import ProjectsList from './components/projects/ProjectsList.vue';
-import {ref} from "vue";
+import CounterTest from "@/components/Counter-Test.vue";
 
 export default {
-  components: {
-    UserList,
-    ProjectsList,
-  },
-  setup(){
-    const selectedUser=ref(null);
-    const activeUsers=USER_DATA;
-
-    function selectUser(uid){
-      selectedUser.value=activeUsers.find((usr)=>usr.id===uid);
-    }
-    return{
-      selectedUser,
-      activeUsers,
-      selectUser
-    };
-  },
-/*  data() {
-    return {
-      selectedUser: null,
-      activeUsers: USER_DATA,
-    };
-  },*/
-/*  methods: {
-    selectUser(uid) {
-      this.selectedUser = this.activeUsers.find((usr) => usr.id === uid);
-    },
-  },*/
+  components: {CounterTest}
 };
 </script>
 
