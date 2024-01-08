@@ -1,12 +1,32 @@
 <script lang="ts">
-import {ref} from "vue";
+import {computed} from "vue";
+import  { useCounterStore } from "@/store/counter"
 export default {
 
   setup() {
-    const counter = ref(10);
+
+    const counter=useCounterStore
+
+
+    const increaseCount=function () {
+     counter;
+    }
+    const dencreaseCount=function () {
+     counter.value--;
+    }
+
+    const oddOrEven=computed(function () {
+      if (counter.value % 2===0)
+        return 'Even'
+      else
+        return 'odd'
+    })
 
     return {
       counter,
+      increaseCount,
+      dencreaseCount,
+      oddOrEven
     }
   }
 }
@@ -14,18 +34,38 @@ export default {
 </script>
 
 <template>
-  <div class="contaner">
-    <p>{{ 10 }}</p>
+  <div class="content">
+    <p>{{ counter }}</p>
+    <div class="buttons">
+      <button @click="increaseCount">+</button>
+      <button @click="dencreaseCount">-</button>
+    </div>
+    <hr/>
+    <div>
+      This number is :
+      <h2>{{oddOrEven}}</h2>
+    </div>
   </div>
 
 </template>
 
 <style scoped>
-div .contaner{
+.content{
+  margin: auto;
+  margin-top: 20%;
+  width: 50%;
+  border: 3px solid green;
+  padding: 10px;
   text-align: center;
-  display: flex;
- align-items: center;
-  align-content: center;
-
+}
+.content p{
+  font-size: xxx-large;
+}
+.buttons button{
+font-size: xxx-large;
+  font-weight: bolder;
+}
+div h2{
+  color: red;
 }
 </style>
